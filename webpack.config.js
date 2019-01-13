@@ -16,7 +16,18 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
+            presets: [
+              [
+                '@babel/preset-env',
+                {
+                  targets: {
+                    browsers: ['last 2 Chrome versions']
+                  }
+                }
+              ],
+              '@babel/preset-react'
+            ],
+            plugins: ['@babel/plugin-proposal-class-properties']
           }
         }
       },
@@ -28,7 +39,12 @@ module.exports = {
           },
           {
             loader: 'css-loader',
-            options: { sourceMap: true, importLoaders: 1, root: 'app' }
+            options: {
+              sourceMap: true,
+              importLoaders: 1,
+              modules: true,
+              localIdentName: '[name]___[hash:base64:3]'
+            }
           }
         ]
       },
@@ -48,5 +64,16 @@ module.exports = {
       filename: 'index.html',
       template: './src/public/index.html'
     })
-  ]
+  ],
+  resolve: {
+    alias: { '~': path.resolve(__dirname) }
+  },
+  devServer: {
+    proxy: {
+      '/api/*': {
+        target: 'http://localhost:3000',
+        pathRewrite: { '^/api': '' }
+      }
+    }
+  }
 }

@@ -1,0 +1,32 @@
+.tweet {
+  color: #798293;
+  border-bottom: 1px solid #798293;
+  margin-bottom: 20px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  color: #000000;
+  font-weight: bold;
+  margin-right: 0.7em;
+}
+
+.handle {
+  color: #798293;
+  margin-right: 0.7em;
+}
+
+.date {
+  color: #798293;
+}

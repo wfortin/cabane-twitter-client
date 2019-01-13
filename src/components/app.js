@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { getTimeline } from '../api/tweets'
-import styles from './app.css'
+import Tweets from './tweets/tweets'
 
 class App extends Component {
   state = {
@@ -20,11 +20,7 @@ class App extends Component {
       return <div>LOADING...</div>
     }
 
-    return tweets.map(({ id, full_text }) => (
-      <div key={id} className={styles.tweet}>
-        {full_text}
-      </div>
-    ))
+    return <Tweets tweets={tweets} />
   }
 }
 

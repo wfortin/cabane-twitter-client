@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import { getTimeline } from '../api/tweets'
 import Tweets from './tweets/tweets'
+import { Loading } from './loading/loading'
 
 class App extends Component {
   state = {
@@ -17,7 +18,7 @@ class App extends Component {
   render() {
     const { fetching, tweets } = this.state
     if (fetching) {
-      return <div>LOADING...</div>
+      return <Loading />
     }
 
     return <Tweets tweets={tweets} />

@@ -11,25 +11,15 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(t|j)sx?$/,
+        loader: 'ts-loader',
+        exclude: [/node_modules/]
+      },
+      {
         test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              [
-                '@babel/preset-env',
-                {
-                  targets: {
-                    browsers: ['last 2 Chrome versions']
-                  }
-                }
-              ],
-              '@babel/preset-react'
-            ],
-            plugins: ['@babel/plugin-proposal-class-properties']
-          }
-        }
+        loader: 'source-map-loader',
+        enforce: 'pre',
+        exclude: /node_modules/
       },
       {
         test: /\.css$/,
@@ -66,6 +56,7 @@ module.exports = {
     })
   ],
   resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
     alias: { '~': path.resolve(__dirname) }
   },
   devServer: {

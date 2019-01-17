@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -8,14 +7,18 @@ import { faHeart as heartSolid } from '@fortawesome/free-solid-svg-icons'
 
 import styles from './favorite.css'
 
-export default class Favorite extends Component {
-  static propTypes = {
-    favorite_count: PropTypes.number,
-    favorited: PropTypes.bool
-  }
+type Props = {
+  favorite_count: number
+  favorited?: boolean
+}
 
+type State = {
+  favorited: boolean
+}
+
+export default class Favorite extends Component<Props, State> {
   state = {
-    favorited: this.props.favorited
+    favorited: !!this.props.favorited
   }
 
   toggle = () => {
@@ -27,7 +30,6 @@ export default class Favorite extends Component {
   render() {
     const { favorite_count } = this.props
     const { favorited } = this.state
-
     return (
       <div
         className={classnames(styles.favorite, {

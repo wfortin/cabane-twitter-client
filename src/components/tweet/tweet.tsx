@@ -1,30 +1,15 @@
 import moment from 'moment'
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 
 import Avatar from '../avatar/avatar'
 import Retweet from '../retweet/retweet'
 import Favorite from '../favorite/favorite'
 import Media from '../media/media'
+import * as API from '../../api/types'
 
 import styles from './tweet.css'
 
-export default class Tweet extends Component {
-  static propTypes = {
-    created_at: PropTypes.string,
-    user: PropTypes.shape({
-      name: PropTypes.string,
-      screen_name: PropTypes.string,
-      profile_image_url_https: PropTypes.string
-    }),
-    full_text: PropTypes.string,
-    entities: PropTypes.shape({
-      media: PropTypes.array
-    }),
-    retweet_count: PropTypes.number,
-    favorite_count: PropTypes.number
-  }
-
+export default class Tweet extends Component<API.Tweet, {}> {
   formatDate = () =>
     moment(this.props.created_at, 'ddd MMM DD HH:mm:ss ZZ YYYY').format('LL')
 
@@ -36,6 +21,7 @@ export default class Tweet extends Component {
       favorite_count,
       entities
     } = this.props
+
     return (
       <div className={styles.tweet}>
         <div className={styles.row}>

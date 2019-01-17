@@ -4,7 +4,12 @@ import { getTimeline } from '../api/tweets'
 import Tweets from './tweets/tweets'
 import { Loading } from './loading/loading'
 
-class App extends Component {
+type AppState = {
+  fetching: boolean
+  tweets: any[]
+}
+
+class App extends Component<{}, AppState> {
   state = {
     fetching: true,
     tweets: []
@@ -20,9 +25,7 @@ class App extends Component {
     if (fetching) {
       return <Loading />
     }
-
     return <Tweets tweets={tweets} />
   }
 }
-
 export default App

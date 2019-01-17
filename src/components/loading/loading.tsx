@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { SFC } from 'react'
 import cn from 'classnames'
 
 import styles from './loading.css'
 
-export const Loading = () => (
+export const Loading: SFC<{}> = () => (
   <div className={styles.wrapper}>
     <div className={styles.skFoldingCube}>
       <div className={cn(styles.skCube1, styles.skCube)} />

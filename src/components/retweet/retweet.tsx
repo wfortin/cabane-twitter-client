@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -7,14 +6,18 @@ import { faRetweet } from '@fortawesome/free-solid-svg-icons'
 
 import styles from './retweet.css'
 
-export default class Retweet extends Component {
-  static propTypes = {
-    retweet_count: PropTypes.number,
-    retweeted: PropTypes.bool
-  }
+type RetweetProps = {
+  retweet_count: number
+  retweeted?: boolean
+}
 
+type RetweetState = {
+  retweeted: boolean
+}
+
+export default class Retweet extends Component<RetweetProps, RetweetState> {
   state = {
-    retweeted: this.props.retweeted
+    retweeted: !!this.props.retweeted
   }
 
   toggle = () => {
@@ -26,6 +29,7 @@ export default class Retweet extends Component {
   render() {
     const { retweet_count } = this.props
     const { retweeted } = this.state
+
     return (
       <div
         className={classnames(styles.retweet, {

@@ -23,6 +23,7 @@
     "react-dom": "^16.7.0"
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.7",
     "@types/react": "^16.7.20",
     "@types/react-dom": "^16.0.11",
     "css-loader": "^2.1.0",

@@ -11,7 +11,6 @@ import styles from './retweet.css'
 const Retweet: SFC<{
   retweet_count: number
   retweeted: boolean
-  onClick: MouseEventHandler<HTMLDivElement>
 }> = ({ retweet_count, ...props }) => {
   const [retweeted, toggleRetweet] = useToggle(props.retweeted)
 

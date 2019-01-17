@@ -2,12 +2,11 @@ import moment from 'moment'
 import React, { Component } from 'react'
 
 import Avatar from '../avatar/avatar'
-import Retweet from '../retweet/retweet-render-prop'
-import Favorite from '../favorite/favorite-render-prop'
+import Retweet from '../retweet/retweet-hook'
+import Favorite from '../favorite/favorite-hook'
 import Media from '../media/media'
 import * as API from '../../api/types'
 import Moment from '../moment/moment'
-import Toggle from '../toggle/toggle-render-prop'
 
 import styles from './tweet.css'
 
@@ -47,25 +46,13 @@ export default class Tweet extends Component<API.Tweet, {}> {
           <Media media={entities.media} />
         </div>
         <div className={styles.row}>
-          <Toggle
-            initialValue={this.props.retweeted}
-            render={(retweeted, toggleRetweet) => (
-              <Retweet
-                retweeted={retweeted}
-                retweet_count={retweeted ? retweet_count + 1 : retweet_count}
-                onClick={toggleRetweet}
-              />
-            )}
+          <Retweet
+            retweeted={this.props.retweeted}
+            retweet_count={retweet_count}
           />
-          <Toggle
-            initialValue={this.props.favorited}
-            render={(favorited, toggleFavorite) => (
-              <Favorite
-                favorited={favorited}
-                favorite_count={favorited ? favorite_count + 1 : favorite_count}
-                onClick={toggleFavorite}
-              />
-            )}
+          <Favorite
+            favorited={this.props.favorited}
+            favorite_count={favorite_count}
           />
         </div>
       </div>

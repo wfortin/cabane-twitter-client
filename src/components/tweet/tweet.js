@@ -26,7 +26,7 @@ export default class Tweet extends Component {
   }
 
   formatDate = () =>
-    moment(this.props.created_at, 'ddd MMM DD HH:mm:ss ZZ YYYY').fromNow()
+    moment(this.props.created_at, 'ddd MMM DD HH:mm:ss ZZ YYYY').format('LL')
 
   render() {
     const {

@@ -1,8 +1,8 @@
 # cabane-twitter-client
 
-## Exemple de code pour la présentation de cabane.io, "React à l'échelle entreprise"
+## Exemple de code pour la présentation de [cabane.io](https://cabane.io/), "React à l'échelle entreprise"
 
-Slides de la présentation
+[Slides de la présentation](https://github.com/wfortin/cabane-twitter-client/blob/master/react-talk.pdf)
 
 Index des différentes branches:
 
